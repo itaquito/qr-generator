@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Rubik } from "next/font/google";
 
 import "./globals.css";
+import NavBar from "@/components/Layout/NavBar";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en">
       <body id="__qr" className={rubik.className}>
         <header>
+          <NavBar />
         </header>
 
         <main>
