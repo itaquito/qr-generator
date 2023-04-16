@@ -10,7 +10,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.indigo["600"]
+        primary: colors.indigo["600"],
+        background: colors.slate["50"]
       }
     },
   },
