@@ -1,17 +1,16 @@
-"use client";
+'use client';
 
-import type { tabComponentProps } from "@/util/listOfTabs";
-import type { ChangeEvent } from "react";
+import type { TabProps } from '@/types/components/Tabs/Tabs';
 
-function URL({ setText }: tabComponentProps) {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value)
-  }
-
+function URL({ setContent }: TabProps) {
   return (
     <input
-      type="text"
-      onChange={handleChange}
+      className='rounded border-2 border-primary px-2 shadow'
+      type='url'
+      id='URL'
+      name='URL'
+      placeholder='Write here your link'
+      onChange={(e) => setContent(e.target.value)}
     />
   );
 }

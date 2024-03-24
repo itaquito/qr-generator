@@ -1,8 +1,8 @@
 'use client';
 
-import type { tabComponentProps } from '@/util/listOfTabs';
+import type { TabProps } from '@/types/components/Tabs/Tabs';
 
-function Text({ setText }: tabComponentProps) {
+function Text({ setContent }: TabProps) {
   return <>Text</>;
 }
 

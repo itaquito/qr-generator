@@ -1,21 +1,20 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import type { QRContent } from '@/types/components/QRCode/QRCode';
 
-import Tabs from "./Tabs/Tabs";
-import QRCode from "./QRCode/QRCode";
+import { useState } from 'react';
+
+import Tabs from './Tabs/TabViewer';
+import QRCode from './QRCode/QRCode';
 
 function Generator() {
-  const [text, setText] = useState("");
-
+  const [content, setContent] = useState<QRContent>('');
 
   return (
-    <>
-      <Tabs setText={setText} />
-      <QRCode
-        text={text}
-      />
-    </>
+    <div className='flex w-full space-x-4'>
+      <Tabs setContent={setContent} />
+      <QRCode content={content} />
+    </div>
   );
 }
 
