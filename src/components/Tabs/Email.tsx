@@ -1,11 +1,9 @@
-"use client";
+'use client';
 
-import type { tabComponentProps } from "@/util/listOfTabs";
+import type { tabComponentProps } from '@/util/listOfTabs';
 
 function Email({ setText }: tabComponentProps) {
-  return (
-    <>Email</>
-  );
+  return <>Email</>;
 }
 
 export default Email;

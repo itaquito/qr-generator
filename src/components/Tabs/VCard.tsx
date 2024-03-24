@@ -1,11 +1,9 @@
-"use client";
+'use client';
 
-import type { tabComponentProps } from "@/util/listOfTabs";
+import type { tabComponentProps } from '@/util/listOfTabs';
 
 function VCard({ setText }: tabComponentProps) {
-  return (
-    <>vCard</>
-  );
+  return <>vCard</>;
 }
 
 export default VCard;

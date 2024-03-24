@@ -1,11 +1,11 @@
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-import { Rubik } from "next/font/google";
+import { Rubik } from 'next/font/google';
 
-import "./globals.css";
-import NavBar from "@/components/Layout/NavBar";
+import './globals.css';
+import NavBar from '@/components/Layout/NavBar';
 
-const rubik = Rubik({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ['latin'] });
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -13,16 +13,14 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body id="__qr" className={`${rubik.className} bg-background`}>
+    <html lang='en'>
+      <body id='__qr' className={`${rubik.className} bg-background`}>
         <header>
           <NavBar />
         </header>
 
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
-  )
+  );
 }

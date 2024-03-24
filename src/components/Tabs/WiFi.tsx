@@ -1,11 +1,9 @@
-"use client";
+'use client';
 
-import type { tabComponentProps } from "@/util/listOfTabs";
+import type { tabComponentProps } from '@/util/listOfTabs';
 
 function WiFi({ setText }: tabComponentProps) {
-  return (
-    <>WiFi</>
-  );
+  return <>WiFi</>;
 }
 
 export default WiFi;
