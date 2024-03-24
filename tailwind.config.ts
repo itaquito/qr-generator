@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         primary: colors.indigo['600'],
         background: colors.slate['50'],
+        border: colors.indigo['300'],
       },
     },
   },

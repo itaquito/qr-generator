@@ -17,6 +17,9 @@ import IcBaselineAssignmentInd from '../Icon/IcBaselineAssignmentInd';
 import IcBaselineEmail from '../Icon/IcBaselineEmail';
 import IcBaselineWifi from '../Icon/IcBaselineWifi';
 
+import ErrorCorrectionLevel from '../Parameter/ErrorCorrectionLevel';
+import ParameterLayout from '../Parameter/ParameterLayout';
+
 export const TABS: Tabs = [
   {
     name: 'URL',
@@ -50,9 +53,14 @@ export const TABS: Tabs = [
   },
 ];
 
-function TabViewer({ setContent }: TabViewerProps) {
+function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
   return (
-    <Tab.Group className='flex flex-grow space-x-4' as='div' vertical>
+    <Tab.Group
+      className='flex flex-grow space-x-4'
+      as='div'
+      vertical
+      onChange={() => setContent('')}
+    >
       <Tab.List className='flex flex-col bg-white shadow'>
         {TABS.map(({ name, description, Icon }, i) => (
           <Tab
@@ -77,14 +85,21 @@ function TabViewer({ setContent }: TabViewerProps) {
         {TABS.map(({ name, description, Component, Icon }, i) => (
           <Tab.Panel key={i}>
             <div className='rounded bg-white p-2 shadow'>
-              <h1 className='flex items-center text-3xl font-bold text-primary'>
+              <h2 className='flex items-center text-xl font-bold text-primary'>
                 <Icon className='mr-2 h-[30px] w-[30px]' /> {name}
-              </h1>
+              </h2>
 
               <p className='text-justify'>{description}</p>
             </div>
 
-            <Component setContent={setContent} />
+            <div className='w-full space-y-4 py-4'>
+              <Component setContent={setContent} />
+
+              <ErrorCorrectionLevel
+                parameters={parameters}
+                setParameters={setParameters}
+              />
+            </div>
           </Tab.Panel>
         ))}
       </Tab.Panels>

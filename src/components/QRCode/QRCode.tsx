@@ -5,24 +5,30 @@ import type { QRCodeProps } from '@/types/components/QRCode/QRCode';
 import { useRef, useEffect } from 'react';
 import QR from 'qrcode';
 
-function QRCode({ content }: QRCodeProps) {
+function QRCode({ content, parameters }: QRCodeProps) {
   const canvas = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     if (!canvas.current || content === '') return;
 
-    QR.toCanvas(canvas.current, content, { errorCorrectionLevel: 'low' });
-  }, [content]);
+    QR.toCanvas(canvas.current, content, {
+      errorCorrectionLevel: parameters.errorCorrectionLevel,
+    });
+  }, [content, parameters]);
 
   return (
-    <div className='rounded bg-white p-2 shadow'>
-      {content !== '' ? (
-        <canvas title='Preview of the QR code' ref={canvas} />
-      ) : (
-        <div className='flex h-[116px] w-[116px] items-center justify-center rounded bg-primary text-center font-bold text-white shadow'>
-          Your QR code will show here
+    <div>
+      <div className='sticky rounded bg-white p-2 shadow'>
+        <div className='rounded border-4 border-primary'>
+          {content !== '' ? (
+            <canvas title='Preview of the QR code' ref={canvas} />
+          ) : (
+            <div className='flex h-[116px] w-[116px] items-center justify-center bg-primary p-2 text-center font-bold text-white'>
+              Your QR code will appear here
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

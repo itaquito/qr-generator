@@ -5,7 +5,7 @@ import type { TabProps } from '@/types/components/Tabs/Tabs';
 function URL({ setContent }: TabProps) {
   return (
     <input
-      className='rounded border-2 border-primary px-2 shadow'
+      className='border-border rounded border-2 px-2 shadow'
       type='url'
       id='URL'
       name='URL'
