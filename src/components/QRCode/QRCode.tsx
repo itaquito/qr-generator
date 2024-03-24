@@ -17,7 +17,7 @@ function QRCode({ content }: QRCodeProps) {
   return (
     <div className='rounded bg-white p-2 shadow'>
       {content !== '' ? (
-        <canvas title='Generated QR code' ref={canvas} />
+        <canvas title='Preview of the QR code' ref={canvas} />
       ) : (
         <div className='flex h-[116px] w-[116px] items-center justify-center rounded bg-primary text-center font-bold text-white shadow'>
           Your QR code will show here

@@ -3,6 +3,7 @@
 import type { TabViewerProps } from '@/types/components/Tabs/TabViewer';
 import type { Tabs } from '@/types/components/Tabs/Tabs';
 
+import classNames from 'classnames';
 import { Tab } from '@headlessui/react';
 
 import URL from './URL';
@@ -10,63 +11,78 @@ import Text from './Text';
 import VCard from './VCard';
 import Email from './Email';
 import WiFi from './WiFi';
+import IcRoundLink from '../Icon/IcRoundLink';
+import IcBaselineEdit from '../Icon/IcBaselineEdit';
+import IcBaselineAssignmentInd from '../Icon/IcBaselineAssignmentInd';
+import IcBaselineEmail from '../Icon/IcBaselineEmail';
+import IcBaselineWifi from '../Icon/IcBaselineWifi';
 
 export const TABS: Tabs = [
   {
     name: 'URL',
     description: 'Opens the URL after scanning.',
     Component: URL,
+    Icon: IcRoundLink,
   },
   {
     name: 'Text',
     description: 'Displays a plain text after scanning.',
     Component: Text,
+    Icon: IcBaselineEdit,
   },
   {
     name: 'vCard',
     description: 'Shows your contact details after scanning.',
     Component: VCard,
+    Icon: IcBaselineAssignmentInd,
   },
   {
     name: 'Email',
     description: 'Sends a predefined email after scanning.',
     Component: Email,
+    Icon: IcBaselineEmail,
   },
   {
     name: 'WiFi',
     description: 'Allows people to connect to a WiFi network after scanning.',
     Component: WiFi,
+    Icon: IcBaselineWifi,
   },
 ];
 
 function TabViewer({ setContent }: TabViewerProps) {
   return (
     <Tab.Group className='flex flex-grow space-x-4' as='div' vertical>
-      <Tab.List className='flex flex-col space-y-4 font-bold'>
-        {TABS.map(({ name, description }, i) => (
+      <Tab.List className='flex flex-col bg-white shadow'>
+        {TABS.map(({ name, description, Icon }, i) => (
           <Tab
             className={({ selected }) =>
-              `rounded border-l-4 border-primary p-2 text-left shadow transition-all ${selected ? 'bg-primary text-white' : 'bg-white hover:bg-indigo-100'}`
+              classNames(
+                'flex items-center border-l-4 border-primary px-6 py-4 outline-none transition-all',
+                {
+                  'border-primary text-primary': selected,
+                  'border-transparent hover:border-indigo-100': !selected,
+                }
+              )
             }
             title={description}
             key={i}
           >
-            {name}
+            <Icon className='mr-2 h-[30px] w-[30px]' /> {name}
           </Tab>
         ))}
       </Tab.List>
-      <Tab.Panels className='w-full'>
-        {TABS.map(({ name, description, Component }, i) => (
-          <Tab.Panel
-            className='rounded bg-white p-2 shadow'
-            key={i}
-            unmount={false}
-          >
-            <h1 className='rounded border-l-4 border-primary px-4 text-3xl font-bold text-primary'>
-              {name}
-            </h1>
 
-            <p className='my-2 text-justify'>{description}</p>
+      <Tab.Panels className='w-full'>
+        {TABS.map(({ name, description, Component, Icon }, i) => (
+          <Tab.Panel key={i}>
+            <div className='rounded bg-white p-2 shadow'>
+              <h1 className='flex items-center text-3xl font-bold text-primary'>
+                <Icon className='mr-2 h-[30px] w-[30px]' /> {name}
+              </h1>
+
+              <p className='text-justify'>{description}</p>
+            </div>
 
             <Component setContent={setContent} />
           </Tab.Panel>
