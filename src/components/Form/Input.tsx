@@ -5,9 +5,13 @@ import classNames from 'classnames';
 function Input({ label, className, id, ...props }: InputProps) {
   return (
     <div className='flex flex-col'>
-      <label className='mb-1 text-sm font-bold' htmlFor={id}>
-        {label}
-      </label>
+      {label ? (
+        <label className='mr-1 text-sm font-bold' htmlFor={id}>
+          {label}
+        </label>
+      ) : (
+        <></>
+      )}
 
       <input
         className={classNames(

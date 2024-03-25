@@ -5,9 +5,13 @@ import classNames from 'classnames';
 function TextArea({ label, className, id, ...props }: TextAreaProps) {
   return (
     <div className='flex flex-col'>
-      <label className='text-sm font-bold' htmlFor={id}>
-        {label}
-      </label>
+      {label ? (
+        <label className='mr-1 text-sm font-bold' htmlFor={id}>
+          {label}
+        </label>
+      ) : (
+        <></>
+      )}
 
       <textarea
         className={classNames(

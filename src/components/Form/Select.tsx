@@ -15,7 +15,11 @@ function Select({
 }: SelectProps) {
   return (
     <div className='flex flex-col'>
-      <label className='mb-1 text-sm font-bold'>{label}</label>
+      {label ? (
+        <label className='mr-1 text-sm font-bold'>{label}</label>
+      ) : (
+        <></>
+      )}
 
       <Listbox className='relative' as='div' value={value} onChange={onChange}>
         <Listbox.Button className='flex items-center rounded border-2 border-border px-2 py-1 shadow'>
