@@ -17,6 +17,7 @@ import IcBaselineAssignmentInd from '../Icon/IcBaselineAssignmentInd';
 import IcBaselineEmail from '../Icon/IcBaselineEmail';
 import IcBaselineWifi from '../Icon/IcBaselineWifi';
 
+import Size from '../Parameter/Size';
 import Color from '../Parameter/Color';
 import ErrorCorrectionLevel from '../Parameter/ErrorCorrectionLevel';
 
@@ -97,6 +98,8 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
             </div>
 
             <div className='w-full space-y-4 py-4'>
+              <Size parameters={parameters} setParameters={setParameters} />
+
               <Color parameters={parameters} setParameters={setParameters} />
 
               <ErrorCorrectionLevel

@@ -14,6 +14,8 @@ function Generator() {
     errorCorrectionLevel: 'low',
     lightColor: '#ffffff',
     darkColor: '#000000',
+    scale: 4,
+    margin: 4,
   });
 
   return (
