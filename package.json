@@ -11,7 +11,7 @@
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.14",
+    "@headlessui/react": "^1.7.18",
     "classnames": "^2.5.1",
     "next": "^14.1.4",
     "qrcode": "^1.5.3",
