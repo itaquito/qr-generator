@@ -1,14 +1,13 @@
 import type {
   ErrorCorrectionLevelProps,
+  ErrorCorrectionLevels,
   ErrorCorrectionLevelsWithLabel,
 } from '@/types/components/Parameter/ErrorCorrectionLevel';
-
-import { Listbox } from '@headlessui/react';
+import type { SelectOptions } from '@/types/components/Form/Select';
 
 import ParameterLayout from './ParameterLayout';
-import IcArrowDropDown from '../Icon/IcArrowDropDown';
-import IcBaselineBugReport from '../Icon/IcBaselineBugReport';
 import Select from '../Form/Select';
+import IcBaselineBugReport from '../Icon/IcBaselineBugReport';
 
 const ERROR_CORRECTION_LEVELS: ErrorCorrectionLevelsWithLabel = {
   low: { label: 'Low', errorResistance: '~7%' },
@@ -21,6 +20,27 @@ function ErrorCorrectionLevel({
   parameters,
   setParameters,
 }: ErrorCorrectionLevelProps) {
+  let options: SelectOptions = {};
+  Object.entries(ERROR_CORRECTION_LEVELS).forEach(
+    ([value, { label, errorResistance }]) => {
+      options = {
+        ...options,
+        [value]: (
+          <>
+            {label} <span className='text-primary'>{errorResistance}</span>
+          </>
+        ),
+      };
+    }
+  );
+
+  const handleChange = (value: ErrorCorrectionLevels) => {
+    setParameters((prevState) => ({
+      ...prevState,
+      errorCorrectionLevel: value,
+    }));
+  };
+
   return (
     <ParameterLayout
       title='Error Correction Level'
@@ -29,37 +49,18 @@ function ErrorCorrectionLevel({
     >
       <Select
         value={parameters.errorCorrectionLevel}
-        onChange={(value) =>
-          setParameters((prevState) => ({
-            ...prevState,
-            errorCorrectionLevel: value,
-          }))
-        }
-        CurrenyDisplayValue={() => (
+        options={options}
+        onChange={handleChange}
+        CurrenyDisplayValue={({ value }: { value: ErrorCorrectionLevels }) => (
           <>
-            {ERROR_CORRECTION_LEVELS[parameters.errorCorrectionLevel].label}
+            {ERROR_CORRECTION_LEVELS[value].label}
+
             <span className='ml-1 text-primary'>
-              {
-                ERROR_CORRECTION_LEVELS[parameters.errorCorrectionLevel]
-                  .errorResistance
-              }
+              {ERROR_CORRECTION_LEVELS[value].errorResistance}
             </span>
-            <IcArrowDropDown className='ml-1' />
           </>
         )}
-      >
-        {Object.entries(ERROR_CORRECTION_LEVELS).map(
-          ([value, { label, errorResistance }]) => (
-            <Listbox.Option
-              className='cursor-pointer px-2 py-1 transition-all hover:bg-slate-200'
-              key={value}
-              value={value}
-            >
-              {label} <span className='text-primary'>{errorResistance}</span>
-            </Listbox.Option>
-          )
-        )}
-      </Select>
+      />
     </ParameterLayout>
   );
 }

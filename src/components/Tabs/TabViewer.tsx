@@ -33,12 +33,6 @@ export const TABS: Tabs = [
     Icon: IcBaselineEdit,
   },
   {
-    name: 'vCard',
-    description: 'Shows your contact details after scanning.',
-    Component: VCard,
-    Icon: IcBaselineAssignmentInd,
-  },
-  {
     name: 'Email',
     description: 'Sends a predefined email after scanning.',
     Component: Email,
@@ -49,6 +43,12 @@ export const TABS: Tabs = [
     description: 'Allows people to connect to a WiFi network after scanning.',
     Component: WiFi,
     Icon: IcBaselineWifi,
+  },
+  {
+    name: 'vCard',
+    description: 'Shows your contact details after scanning.',
+    Component: VCard,
+    Icon: IcBaselineAssignmentInd,
   },
 ];
 
@@ -90,7 +90,7 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
 
               <p className='text-justify'>{description}</p>
 
-              <div className='mt-2 space-y-2'>
+              <div className='mt-2 space-y-4'>
                 <Component setContent={setContent} />
               </div>
             </div>

@@ -1,9 +1,11 @@
 'use client';
 
+import type { ChangeEvent } from 'react';
+
 import type { TabProps } from '@/types/components/Tabs/Tabs';
 import type { EmailValues } from '@/types/components/Tabs/Email';
 
-import { ChangeEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Input from '../Form/Input';
 import TextArea from '../Form/TextArea';
