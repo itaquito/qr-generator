@@ -6,6 +6,7 @@ import type { EmailValues } from '@/types/components/Tabs/Email';
 import { ChangeEvent, useEffect, useState } from 'react';
 
 import Input from '../Form/Input';
+import TextArea from '../Form/TextArea';
 
 function Email({ setContent }: TabProps) {
   const [values, setValues] = useState<EmailValues>({
@@ -15,6 +16,13 @@ function Email({ setContent }: TabProps) {
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handlleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -51,13 +59,12 @@ function Email({ setContent }: TabProps) {
         onChange={handleChange}
       />
 
-      <Input
+      <TextArea
         label='Body'
-        type='text'
-        id='body'
         name='body'
+        id='body'
         placeholder='Write the body of the email here'
-        onChange={handleChange}
+        onChange={handlleTextAreaChange}
       />
     </>
   );

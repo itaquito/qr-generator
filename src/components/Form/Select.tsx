@@ -15,6 +15,7 @@ function Select<T>({
       <Listbox.Button className='flex items-center rounded border-2 border-border px-2 py-1 shadow'>
         <CurrenyDisplayValue />
       </Listbox.Button>
+
       <Listbox.Options className='absolute max-h-60 overflow-auto rounded bg-white shadow-lg'>
         {children}
       </Listbox.Options>

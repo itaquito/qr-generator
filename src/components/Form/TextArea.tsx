@@ -1,17 +1,17 @@
-import type InputProps from '@/types/components/Form/Input';
+import type { TextAreaProps } from '@/types/components/Form/TextArea';
 
 import classNames from 'classnames';
 
-function Input({ label, className, id, ...props }: InputProps) {
+function TextArea({ label, className, id, ...props }: TextAreaProps) {
   return (
     <div className='flex flex-col'>
       <label className='text-sm font-bold' htmlFor={id}>
         {label}
       </label>
 
-      <input
+      <textarea
         className={classNames(
-          'rounded border-2 border-border px-2 shadow outline-none',
+          'w-full rounded border-2 border-border px-2 shadow',
           className
         )}
         {...props}
@@ -20,4 +20,4 @@ function Input({ label, className, id, ...props }: InputProps) {
   );
 }
 
-export default Input;
+export default TextArea;

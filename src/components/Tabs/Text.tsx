@@ -2,13 +2,12 @@
 
 import type { TabProps } from '@/types/components/Tabs/Tabs';
 
-import Input from '../Form/Input';
+import TextArea from '../Form/TextArea';
 
 function Text({ setContent }: TabProps) {
   return (
-    <Input
+    <TextArea
       label='Text'
-      type='text'
       id='text'
       name='text'
       placeholder='Write your text content here'
