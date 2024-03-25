@@ -18,7 +18,6 @@ import IcBaselineEmail from '../Icon/IcBaselineEmail';
 import IcBaselineWifi from '../Icon/IcBaselineWifi';
 
 import ErrorCorrectionLevel from '../Parameter/ErrorCorrectionLevel';
-import ParameterLayout from '../Parameter/ParameterLayout';
 
 export const TABS: Tabs = [
   {
@@ -90,11 +89,13 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
               </h2>
 
               <p className='text-justify'>{description}</p>
+
+              <div className='mt-2'>
+                <Component setContent={setContent} />
+              </div>
             </div>
 
             <div className='w-full space-y-4 py-4'>
-              <Component setContent={setContent} />
-
               <ErrorCorrectionLevel
                 parameters={parameters}
                 setParameters={setParameters}
