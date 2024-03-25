@@ -8,7 +8,7 @@ import { Tab } from '@headlessui/react';
 
 import URL from './URL';
 import Text from './Text';
-import VCard from './VCard';
+import Contact from './Contact';
 import Email from './Email';
 import WiFi from './WiFi';
 import IcRoundLink from '../Icon/IcRoundLink';
@@ -45,9 +45,9 @@ export const TABS: Tabs = [
     Icon: IcBaselineWifi,
   },
   {
-    name: 'vCard',
+    name: 'Contact',
     description: 'Shows your contact details after scanning.',
-    Component: VCard,
+    Component: Contact,
     Icon: IcBaselineAssignmentInd,
   },
 ];
