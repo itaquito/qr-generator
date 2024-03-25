@@ -2,14 +2,16 @@
 
 import type { TabProps } from '@/types/components/Tabs/Tabs';
 
+import Input from '../Form/Input';
+
 function URL({ setContent }: TabProps) {
   return (
-    <input
-      className='border-border rounded border-2 px-2 shadow'
+    <Input
+      label='URL'
       type='url'
       id='URL'
       name='URL'
-      placeholder='Write here your link'
+      placeholder='Write your link here'
       onChange={(e) => setContent(e.target.value)}
     />
   );
