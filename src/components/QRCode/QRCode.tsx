@@ -22,7 +22,7 @@ function QRCode({ content, parameters }: QRCodeProps) {
 
   return (
     <div>
-      <div className='sticky rounded bg-white p-2 shadow'>
+      <div className='sticky top-4 rounded bg-white p-2 shadow'>
         <div className='rounded border-4 border-primary'>
           {content !== '' ? (
             <canvas title='Preview of the QR code' ref={canvas} />
