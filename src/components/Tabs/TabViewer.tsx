@@ -90,7 +90,7 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
 
               <p className='text-justify'>{description}</p>
 
-              <div className='mt-2'>
+              <div className='mt-2 space-y-2'>
                 <Component setContent={setContent} />
               </div>
             </div>
