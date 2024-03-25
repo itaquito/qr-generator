@@ -15,7 +15,7 @@ function TextArea({ label, className, id, ...props }: TextAreaProps) {
 
       <textarea
         className={classNames(
-          'w-full rounded border-2 border-border px-2 shadow',
+          'w-full rounded border-2 border-border px-2 shadow outline-none',
           className
         )}
         id={id}

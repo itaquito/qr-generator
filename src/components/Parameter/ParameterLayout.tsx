@@ -9,9 +9,10 @@ function ParameterLayout({
   return (
     <div className='w-full rounded bg-white p-2 shadow'>
       <div className='mb-2'>
-        <h3 className='flex items-center text-xl font-bold'>
-          <Icon className='mr-2 h-[30px] w-[30px]' /> {title}
-        </h3>
+        <div className='flex items-center'>
+          <Icon className='mr-2 h-[30px] w-[30px] text-primary' />{' '}
+          <h3 className='text-xl font-bold'>{title}</h3>
+        </div>
         <p className='text-justify'>{description}</p>
       </div>
       {children}

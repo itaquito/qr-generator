@@ -17,6 +17,7 @@ import IcBaselineAssignmentInd from '../Icon/IcBaselineAssignmentInd';
 import IcBaselineEmail from '../Icon/IcBaselineEmail';
 import IcBaselineWifi from '../Icon/IcBaselineWifi';
 
+import Color from '../Parameter/Color';
 import ErrorCorrectionLevel from '../Parameter/ErrorCorrectionLevel';
 
 export const TABS: Tabs = [
@@ -96,6 +97,8 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
             </div>
 
             <div className='w-full space-y-4 py-4'>
+              <Color parameters={parameters} setParameters={setParameters} />
+
               <ErrorCorrectionLevel
                 parameters={parameters}
                 setParameters={setParameters}

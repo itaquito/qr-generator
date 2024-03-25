@@ -12,6 +12,8 @@ function Generator() {
   const [content, setContent] = useState<QRContent>('');
   const [parameters, setParameters] = useState<Parameters>({
     errorCorrectionLevel: 'low',
+    lightColor: '#ffffff',
+    darkColor: '#000000',
   });
 
   return (

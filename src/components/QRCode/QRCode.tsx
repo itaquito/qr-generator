@@ -13,6 +13,10 @@ function QRCode({ content, parameters }: QRCodeProps) {
 
     QR.toCanvas(canvas.current, content, {
       errorCorrectionLevel: parameters.errorCorrectionLevel,
+      color: {
+        dark: parameters.darkColor,
+        light: parameters.lightColor,
+      },
     });
   }, [content, parameters]);
 
