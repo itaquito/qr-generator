@@ -4,6 +4,7 @@ import { Rubik } from 'next/font/google';
 
 import './globals.css';
 import NavBar from '@/components/Layout/NavBar';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const rubik = Rubik({ subsets: ['latin'] });
 
@@ -14,12 +15,14 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en'>
-      <body id='__qr' className={`${rubik.className} bg-background`}>
-        <header>
-          <NavBar />
-        </header>
+      <body id='__qr' className={`${rubik.className} bg-background dark:bg-gray-900 transition-colors`}>
+        <ThemeProvider>
+          <header>
+            <NavBar />
+          </header>
 
-        <main>{children}</main>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -16,10 +16,12 @@ function Generator() {
     darkColor: '#000000',
     scale: 4,
     margin: 4,
+    centerImage: null,
+    centerImageSize: 20,
   });
 
   return (
-    <div className='flex w-full space-x-4'>
+    <div className='flex w-full space-x-4 p-4'>
       <Tabs
         setContent={setContent}
         parameters={parameters}

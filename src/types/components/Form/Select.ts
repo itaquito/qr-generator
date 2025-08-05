@@ -6,6 +6,7 @@ export interface SelectProps {
   onChange: Dispatch<SetStateAction<any>>;
   CurrenyDisplayValue: ElementType<CurrentDisplayValueProps>;
   label?: string;
+  disabled?: boolean;
 }
 
 export interface SelectOptions {

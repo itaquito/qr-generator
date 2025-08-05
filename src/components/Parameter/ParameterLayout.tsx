@@ -7,13 +7,13 @@ function ParameterLayout({
   Icon,
 }: ParameterLayoutProps) {
   return (
-    <div className='w-full rounded bg-white p-2 shadow'>
+    <div className='w-full rounded bg-white dark:bg-gray-800 p-2 shadow dark:shadow-gray-700'>
       <div className='mb-2'>
         <div className='flex items-center'>
-          <Icon className='mr-2 h-[30px] w-[30px] text-primary' />{' '}
-          <h3 className='text-xl font-bold'>{title}</h3>
+          <Icon className='mr-2 h-[30px] w-[30px] text-primary dark:text-indigo-400' />{' '}
+          <h3 className='text-xl font-bold text-gray-900 dark:text-white'>{title}</h3>
         </div>
-        <p className='text-justify'>{description}</p>
+        <p className='text-justify text-gray-700 dark:text-gray-300'>{description}</p>
       </div>
       {children}
     </div>

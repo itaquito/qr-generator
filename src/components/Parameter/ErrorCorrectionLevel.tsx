@@ -20,6 +20,8 @@ function ErrorCorrectionLevel({
   parameters,
   setParameters,
 }: ErrorCorrectionLevelProps) {
+  const isDisabled = !!parameters.centerImage;
+  
   let options: SelectOptions = {};
   Object.entries(ERROR_CORRECTION_LEVELS).forEach(
     ([value, { label, errorResistance }]) => {
@@ -35,26 +37,33 @@ function ErrorCorrectionLevel({
   );
 
   const handleChange = (value: ErrorCorrectionLevels) => {
-    setParameters((prevState) => ({
-      ...prevState,
-      errorCorrectionLevel: value,
-    }));
+    if (!isDisabled) {
+      setParameters((prevState) => ({
+        ...prevState,
+        errorCorrectionLevel: value,
+      }));
+    }
   };
 
   return (
     <ParameterLayout
       title='Error Correction Level'
-      description='Error correction capability allows to successfully scan a QR Code even if the symbol is dirty or damaged. The percentage indicates the maximum amount of damaged surface after which the symbol becomes unreadable.'
+      description={
+        isDisabled 
+          ? 'Error correction is automatically set to High (30%) when using a center image for optimal scanning reliability.'
+          : 'Error correction capability allows to successfully scan a QR Code even if the symbol is dirty or damaged. The percentage indicates the maximum amount of damaged surface after which the symbol becomes unreadable.'
+      }
       Icon={IcBaselineBugReport}
     >
       <Select
         value={parameters.errorCorrectionLevel}
         options={options}
         onChange={handleChange}
+        disabled={isDisabled}
         CurrenyDisplayValue={({ value }: { value: ErrorCorrectionLevels }) => (
           <>
             {ERROR_CORRECTION_LEVELS[value].label}
-
+            {isDisabled && <span className="ml-1 text-xs text-gray-500 dark:text-gray-400">(Auto)</span>}
             <span className='ml-1 text-primary'>
               {ERROR_CORRECTION_LEVELS[value].errorResistance}
             </span>

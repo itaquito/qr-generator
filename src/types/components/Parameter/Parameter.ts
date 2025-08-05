@@ -8,6 +8,8 @@ export interface Parameters {
   darkColor: string;
   scale: number;
   margin: number;
+  centerImage?: File | null;
+  centerImageSize?: number;
 }
 
 export type SetParameters = Dispatch<SetStateAction<Parameters>>;

@@ -20,6 +20,8 @@ import IcBaselineWifi from '../Icon/IcBaselineWifi';
 import Size from '../Parameter/Size';
 import Color from '../Parameter/Color';
 import ErrorCorrectionLevel from '../Parameter/ErrorCorrectionLevel';
+import ImageUpload from '../Form/ImageUpload';
+import ImageSize from '../Parameter/ImageSize';
 
 export const TABS: Tabs = [
   {
@@ -55,6 +57,15 @@ export const TABS: Tabs = [
 ];
 
 function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
+  const handleImageSelect = (file: File | null) => {
+    setParameters((prev) => ({
+      ...prev,
+      centerImage: file,
+      // Automatically set error correction to high when image is added
+      errorCorrectionLevel: file ? 'high' : prev.errorCorrectionLevel,
+    }));
+  };
+
   return (
     <Tab.Group
       className='flex flex-grow space-x-4'
@@ -62,15 +73,15 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
       vertical
       onChange={() => setContent('')}
     >
-      <Tab.List className='flex flex-col bg-white shadow'>
+      <Tab.List className='flex flex-col bg-white dark:bg-gray-800 shadow dark:shadow-gray-700'>
         {TABS.map(({ name, description, Icon }, i) => (
           <Tab
             className={({ selected }) =>
               classNames(
-                'flex items-center border-l-4 border-primary px-6 py-4 outline-none transition-all',
+                'flex items-center border-l-4 border-primary px-6 py-4 outline-none transition-all text-gray-700 dark:text-gray-300',
                 {
-                  'border-primary text-primary': selected,
-                  'border-transparent hover:border-indigo-100': !selected,
+                  'border-primary text-primary dark:text-indigo-400 bg-indigo-50 dark:bg-gray-700': selected,
+                  'border-transparent hover:border-indigo-100 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700': !selected,
                 }
               )
             }
@@ -85,12 +96,12 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
       <Tab.Panels className='w-full'>
         {TABS.map(({ name, description, Component, Icon }, i) => (
           <Tab.Panel key={i}>
-            <div className='rounded bg-white p-2 shadow'>
-              <h2 className='flex items-center text-xl font-bold text-primary'>
+            <div className='rounded bg-white dark:bg-gray-800 p-2 shadow dark:shadow-gray-700'>
+              <h2 className='flex items-center text-xl font-bold text-primary dark:text-indigo-400'>
                 <Icon className='mr-2 h-[30px] w-[30px]' /> {name}
               </h2>
 
-              <p className='text-justify'>{description}</p>
+              <p className='text-justify text-gray-700 dark:text-gray-300'>{description}</p>
 
               <div className='mt-2 space-y-4'>
                 <Component setContent={setContent} />
@@ -101,6 +112,18 @@ function TabViewer({ setContent, parameters, setParameters }: TabViewerProps) {
               <Size parameters={parameters} setParameters={setParameters} />
 
               <Color parameters={parameters} setParameters={setParameters} />
+
+              <ImageUpload
+                onImageSelect={handleImageSelect}
+                currentImage={parameters.centerImage}
+              />
+
+              {parameters.centerImage && (
+                <ImageSize 
+                  parameters={parameters} 
+                  setParameters={setParameters} 
+                />
+              )}
 
               <ErrorCorrectionLevel
                 parameters={parameters}

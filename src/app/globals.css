@@ -4,6 +4,74 @@
 
 #__qr {
   min-height: 100vh;
-
   overflow-wrap: break-word;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom slider styles */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #4f46e5;
+}
+
+.slider::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #6366f1;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  background: #4f46e5;
+}
+
+.slider:disabled::-webkit-slider-thumb {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.slider:disabled::-moz-range-thumb {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Dark mode slider styles */
+.dark .slider::-webkit-slider-thumb {
+  border-color: #374151;
+  background: #818cf8;
+}
+
+.dark .slider::-webkit-slider-thumb:hover {
+  background: #6366f1;
+}
+
+.dark .slider::-moz-range-thumb {
+  border-color: #374151;
+  background: #818cf8;
+}
+
+.dark .slider::-moz-range-thumb:hover {
+  background: #6366f1;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
